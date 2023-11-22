@@ -193,6 +193,36 @@ end
 
 ![image-20231122102701528](README.assets/image-20231122102701528.png)
 
+#### 客观评价指标
+
+##### 图像熵
+
+![image-20231122160216431](README.assets/image-20231122160216431.png)
+
+
+
+##### 对比度变化率
+
+![image-20231122160117495](README.assets/image-20231122160117495.png)
+
+##### 色调变化率
+
+![image-20231122160813676](README.assets/image-20231122160813676.png)
+
+##### 能量梯度函数
+
+![image-20231122163126148](README.assets/image-20231122163126148.png)
+
+##### 方差函数
+
+![image-20231122163515658](README.assets/image-20231122163515658.png)
+
+##### 自相关函数
+
+![image-20231122163808686](README.assets/image-20231122163808686.png)
+
+
+
 ### Uretinex-net
 
 #### LOL
@@ -219,23 +249,45 @@ end
 
 ##### PSNR
 
-![image-20231122103213743](README.assets/image-20231122103213743.png)
-
-
+![image-20231122164037104](README.assets/image-20231122164037104.png)
 
 ##### SSIM
 
+![image-20231122164010477](README.assets/image-20231122164010477.png)
 
 
-![image-20231122103217094](README.assets/image-20231122103217094.png)
 
 ##### NIQE
 
+![image-20231122163940361](README.assets/image-20231122163940361.png)
 
 
-![image-20231122103220384](README.assets/image-20231122103220384.png)
 
+### 两种增强方法对比
 
+#### LOL
+
+![image-20231122164424086](README.assets/image-20231122164424086.png)
+
+![image-20231122164518981](README.assets/image-20231122164518981.png)
+
+![image-20231122164542729](README.assets/image-20231122164542729.png)
+
+#### CUMT
+
+![image-20231122164712997](README.assets/image-20231122164712997.png)
+
+![image-20231122164747567](README.assets/image-20231122164747567.png)
+
+![image-20231122164824063](README.assets/image-20231122164824063.png)
+
+### 细节对比
+
+![image-20231122165014126](README.assets/image-20231122165014126.png)
+
+![image-20231122165106424](README.assets/image-20231122165106424.png)
+
+![image-20231122165327951](README.assets/image-20231122165327951.png)
 
 ## 自制数据集
 
@@ -296,3 +348,15 @@ end
 ![image-20231122110256693](README.assets/image-20231122110256693.png)
 
 ![image-20231122110736524](README.assets/image-20231122110736524.png)
+
+## 参考文献
+
+[1]  张立亚,郝博南,孟庆勇等.基于HSV空间改进融合Retinex算法的井下图像增强方法[J].煤炭学报,2020,45(S1):532-540.
+
+[2]  王洪栋,郭伟东,朱美强等.一种煤矿井下低照度图像增强算法[J].工矿自动化,2019,45(11):81-85.
+
+[3] W. Wu, et al.“Uretinex-net: retinex-based deep unfolding network for low-light image enhancement” Proc. of the IEEE Comput. Soc. Conf. Comput. Vis. Pattern Recognit., pp. 5901-5910, 2022.
+
+[4] Lu Y, Jung S W. Progressive joint low-light enhancement and noise removal for raw images[J]. IEEE Transactions on Image Processing, 2022, 31: 2390-2404.
+
+[5] HSV色彩空间的Retinex结构光图像增强算法

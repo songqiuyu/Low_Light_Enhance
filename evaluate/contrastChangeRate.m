@@ -4,45 +4,47 @@ close all
 CCR_1 = [];
 CCR_2 = [];
 
-for cnt=1:95
+
+for cnt=1:114
     try
-        src = sprintf("..\\RetinexHSV\\result\\lol\\%d.png", cnt);
-        % src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
+        src = sprintf("..\\RetinexHSV\\result\\CMNT\\%04d.png", cnt);
         I=imread(src);
         CCR_1 = [CCR_1, max(I(:)) - min(I(:))];
-
-        % src = sprintf("..\\RetinexHSV\\result\\Unet\\%d_URetinexNet.png", cnt);
-        src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
-        I=imread(src);
-        CCR_2 = [CCR_2, max(I(:)) - min(I(:))];
-        
-        fprintf("%d done \n", cnt);
+        fprintf("CMNT: %d done \n", cnt);
     catch
         continue;
     end
 end  
 
+for cnt=1:142
+    try
+        src = sprintf("..\\RetinexHSV\\result\\lol\\%d.png", cnt);
+        I=imread(src);
+        CCR_2 = [CCR_2, max(I(:)) - min(I(:))];
+        fprintf("LOL: %d done \n", cnt);
+    catch
+        continue;
+    end
+end  
+
+
 avg_CCR1 = mean(CCR_1(:));
 avg_CCR2 = mean(CCR_2(:));
-len = length(CCR_1(:));
-index = linspace(1, len, len);
+len1 = length(CCR_1(:));
+len2 = length(CCR_2(:));
+index1 = linspace(1, len1, len1);
+index2 = linspace(2, len2, len2);
 
-scatter(index, CCR_1, 'red', 'filled');
+scatter(index1, CCR_1, 'red', 'filled');
 hold on
-scatter(index, CCR_2, 'blue', 'filled');
+scatter(index2, CCR_2, 'blue', 'filled');
 hold on
-line([1, max(index)], [avg_CCR1, avg_CCR1], 'Color', 'red', 'LineWidth', 1.5);
+line([1, max(index1)], [avg_CCR1, avg_CCR1], 'Color', 'red', 'LineWidth', 1.5);
 hold on
-line([1, max(index)], [avg_CCR2, avg_CCR2], 'Color', 'blue', 'LineWidth', 1.5);
+line([1, max(index1)], [avg_CCR2, avg_CCR2], 'Color', 'blue', 'LineWidth', 1.5);
 hold on
-for i = 1:max(index)
-    if(CCR_1(i) > CCR_2(i))
-        line([i, i], [CCR_1(i), CCR_2(i)], 'Color', 'red', 'LineStyle', '--');
-        hold on;
-    else
-        line([i, i], [CCR_1(i), CCR_2(i)], 'Color', 'blue', 'LineStyle', '--');
-        hold on;
-    end
-end
-legend('HSVR', 'MSR', 'HSVR_A_V_E', 'MSR_A_V_E')
+legend('CMNT', 'LOL', 'CMNT_A_V_E', 'LOL_A_V_E')
+xlabel('Samples(n)');
+ylabel('ContrastChangeRate');
+title('ContrastChangeRate Results of Retinex Algorithm Based on HSV Space in CMNT and LOL Datasets');
     

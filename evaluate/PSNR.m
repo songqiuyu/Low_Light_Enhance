@@ -57,6 +57,6 @@ hold on
 legend('CMNT', 'LOL', 'CMNT_A_V_E', 'LOL_A_V_E')
 xlabel('Samples(n)');
 ylabel('PSNR');
-title('PSNR Results of URetinex-Net Based on HSV Space in CMNT and LOL Datasets');
+title('PSNR Results of URetinex-Net in CMNT and LOL Datasets');
 
     

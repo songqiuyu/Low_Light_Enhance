@@ -61,4 +61,4 @@ hold on
 legend('CMNT', 'LOL', 'CMNT_A_V_E', 'LOL_A_V_E')
 xlabel('Samples(n)');
 ylabel('SSIM');
-title('SSIM Results of URetinex-Net Algorithm Based on HSV Space in CMNT and LOL Datasets');
+title('SSIM Results of URetinex-Net in CMNT and LOL Datasets');

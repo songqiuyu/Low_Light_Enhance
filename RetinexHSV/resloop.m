@@ -1,5 +1,5 @@
 %for count = 119:789
- for count = 1:71
+ for count = 32:71
  %for count = 1:200
     try
         % 首先读照片
