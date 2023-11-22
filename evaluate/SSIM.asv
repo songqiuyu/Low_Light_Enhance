@@ -1,0 +1,81 @@
+clear
+close all
+
+SSIM_1 = [];
+SSIM_2 = [];
+
+for cnt=1:95
+    try
+        srcI = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\Paper2\\our485\\low\\%d.png", cnt);
+        src = sprintf("..\\RetinexHSV\\result\\lol\\%d.png", cnt);
+        % src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
+        
+        origin = im2double(imread(srcI));
+        process = im2double(imread(src));
+        SSIM_value = ssim(process, origin);
+        SSIM_1 = [SSIM_1, SSIM_value];
+        src = sprintf("..\\RetinexHSV\\result\\Unet\\%d_URetinexNet.png", cnt);
+        % src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
+        process = im2double(imread(src));
+        SSIM_value = ssim(process, origin);
+        SSIM_2 = [SSIM_2, SSIM_value];
+
+        
+        fprintf("LOL: %d done \n", cnt);
+    catch
+        continue;
+    end
+end  
+
+
+for cnt=1:95
+    try
+        srcI = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\Paper2\\our485\\low\\%d.png", cnt);
+        src = sprintf("..\\RetinexHSV\\result\\lol\\%d.png", cnt);
+        % src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
+        
+        origin = im2double(imread(srcI));
+        process = im2double(imread(src));
+        SSIM_value = ssim(process, origin);
+        SSIM_1 = [SSIM_1, SSIM_value];
+        src = sprintf("..\\RetinexHSV\\result\\Unet\\%d_URetinexNet.png", cnt);
+        % src = sprintf("..\\..\\..\\PaperReproduction\\DigitalImage\\RetinexDemo\\result\\SSR\\%d.jpg", cnt);
+        process = im2double(imread(src));
+        SSIM_value = ssim(process, origin);
+        SSIM_2 = [SSIM_2, SSIM_value];
+
+        
+        fprintf("LOL: %d done \n", cnt);
+    catch
+        continue;
+    end
+end  
+
+
+
+avg_SSIM1 = mean(SSIM_1(:));
+avg_SSIM2 = mean(SSIM_2(:));
+len = length(SSIM_1(:));
+index = linspace(1, len, len);
+
+scatter(index, SSIM_1, 'red', 'filled');
+hold on
+scatter(index, SSIM_2, 'blue', 'filled');
+hold on
+line([1, max(index)], [avg_SSIM1, avg_SSIM1], 'Color', 'red', 'LineWidth', 1.5);
+hold on
+line([1, max(index)], [avg_SSIM2, avg_SSIM2], 'Color', 'blue', 'LineWidth', 1.5);
+hold on
+for i = 1:max(index)
+    if(SSIM_1(i) > SSIM_2(i))
+        line([i, i], [SSIM_1(i), SSIM_2(i)], 'Color', 'red', 'LineStyle', '--');
+        hold on;
+    else
+        line([i, i], [SSIM_1(i), SSIM_2(i)], 'Color', 'blue', 'LineStyle', '--');
+        hold on;
+    end
+end
+legend('HSVR', 'MSR', 'HSVR_A_V_E', 'MSR_A_V_E')
+xlabel('Samples(n)');
+ylabel('PSNR');
+title('PSNR Results of Improved Fusion Retinex Algorithm Based on HSV Space in CMNT and LOL Datasets');
